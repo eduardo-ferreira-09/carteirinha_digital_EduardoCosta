@@ -19,7 +19,9 @@ class ApiLoginRepositoryImpl(
                 nome = response.nome,
                 curso = response.curso,
                 turma = response.turma,
-                token = response.token
+                token = response.token,
+                matricula = TODO(),
+                perfil = TODO()
             )
         }.recoverCatching { throwable ->
             throw mapToDomainError(throwable)

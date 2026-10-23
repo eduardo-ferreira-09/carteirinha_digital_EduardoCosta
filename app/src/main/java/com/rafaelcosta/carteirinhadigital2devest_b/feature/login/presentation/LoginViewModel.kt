@@ -12,19 +12,20 @@ import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 
 class LoginViewModel(
-    private val repository: LoginRepository = LoginRepositoryProvider.provide()
+    private val repository: LoginRepository
 ) : ViewModel() {
-
-    private val _uiState = MutableStateFlow(LoginUIState())
-    val uiState: StateFlow<LoginUIState> = _uiState.asStateFlow()
+    private val _uiState = MutableStateFlow(LoginUiState())
+    val uiState: StateFlow<LoginUiState> = _uiState.asStateFlow()
 
     fun onEvent(event: LoginEvent) {
+
         when (event) {
-            is LoginEvent.OnUsuarioChange -> {
+            is LoginEvent.OnUsuarioChange ->{
                 _uiState.update { state ->
                     state.copy(
                         usuario = event.value,
-                        erroMessage = null
+                        errorMessage = null,
+                        credentialError = false
                     )
                 }
             }
@@ -32,10 +33,13 @@ class LoginViewModel(
                 _uiState.update { state ->
                     state.copy(
                         senha = event.value,
-                        erroMessage = null
+                        errorMessage = null,
+                        credentialError = false
                     )
                 }
             }
+            LoginEvent.OnEntrarClick -> fazerLogin()
+
             LoginEvent.OnNavegacaoRealizada -> {
                 _uiState.update {
                     it.copy(
@@ -43,9 +47,8 @@ class LoginViewModel(
                     )
                 }
             }
-
-            LoginEvent.OnEntrarClick -> fazerLogin()
         }
+
     }
 
     private fun fazerLogin() {
@@ -54,7 +57,8 @@ class LoginViewModel(
         if(state.usuario.isBlank() || state.senha.isBlank()){
             _uiState.update {
                 it.copy(
-                    erroMessage = "Preencha login e senha"
+                    errorMessage = "Preencha login e senha",
+                    credentialError = true
                 )
             }
             return
@@ -64,7 +68,8 @@ class LoginViewModel(
             _uiState.update {
                 it.copy(
                     isLoading = true,
-                    erroMessage = null,
+                    errorMessage = null,
+                    credentialError = false,
                     usuarioLogado = null
                 )
             }
@@ -78,21 +83,24 @@ class LoginViewModel(
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            erroMessage = null,
+                            errorMessage = null,
+                            credentialError = false,
                             usuarioLogado = usuarioLogado
                         )
                     }
                 }
                 .onFailure { throwable ->
+                    val errorMessage = throwable.message ?: "Erro ao fazer login."
+                    val isCredentialError = errorMessage.contains("login ou senha", ignoreCase = true)
                     _uiState.update {
                         it.copy(
                             isLoading = false,
-                            erroMessage = throwable.message ?: "Erro ao fazer Login"
+                            errorMessage = errorMessage,
+                            credentialError = isCredentialError
                         )
                     }
+
                 }
         }
     }
-
-
 }

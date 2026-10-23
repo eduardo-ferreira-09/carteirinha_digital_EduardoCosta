@@ -5,23 +5,23 @@ import kotlinx.coroutines.delay
 
 class FakeLoginRepositoryImpl : LoginRepository {
 
-    override suspend fun login(usuario: String, senha: String)
-    : Result<UsuarioLogado> {
+    override suspend fun login(usuario: String, senha: String): Result<UsuarioLogado> {
         delay(1500)
-        return if(usuario.equals("aluno") && senha.equals("123")){
+        return if (usuario == "aluno" && senha == "123") {
             Result.success(
                 UsuarioLogado(
-                    id="1",
+                    id = "1",
                     nome = "Rafael Costa",
-                    curso = "Desenvolvimento de Sistema",
+                    matricula = "2026000001",
+                    curso = "Desenvolvimento de Sistemas",
                     turma = "2DEVEST-B",
                     token = "token-fake-para-aula"
                 )
             )
-        }else{
+        } else {
             Result.failure(
                 IllegalArgumentException(
-                        "Login ou senha inválidos"
+                    "Login ou senha inválidos"
                 )
             )
         }
