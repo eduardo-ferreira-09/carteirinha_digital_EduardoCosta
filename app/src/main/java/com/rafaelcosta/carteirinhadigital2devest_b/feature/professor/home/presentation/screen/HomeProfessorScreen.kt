@@ -77,13 +77,15 @@ fun HomeProfessorScreen(
     }
 }
 
+
 @Composable
 fun NavigationButton(text: String, onClick: () -> Unit, modifier: Modifier) {
-    TODO("Not yet implemented")
-}
-
-fun fillMaxSize() {
-    TODO("Not yet implemented")
+    androidx.compose.material3.Button(
+        onClick = onClick,
+        modifier = modifier
+    ) {
+        androidx.compose.material3.Text(text = text)
+    }
 }
 
 @Preview(showBackground = true)

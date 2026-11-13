@@ -1,12 +1,30 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component
 
+import androidx.compose.foundation.Image
+import androidx.compose.foundation.border
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.draw.clip
+import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.rafaelcosta.carteirinhadigital2devest.feature.aluno.carteirinha.presentation.component.InfoAluno
+import com.rafaelcosta.carteirinhadigital2devest_b.R
+
 @Composable
 fun PerfilAluno(
     nome: String,
     matricula: String,
     curso: String,
-    idFoto: Int =
-        R.drawable.login
+    idFoto: Int = R.drawable.fotodeperfil
 ) {
 
     Column(

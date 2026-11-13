@@ -11,7 +11,7 @@ class FakeLoginRepositoryImpl : LoginRepository {
             Result.success(
                 UsuarioLogado(
                     id = "1",
-                    nome = "Rafael Costa",
+                    nome = "Eduardo Costa",
                     matricula = "2026000001",
                     curso = "Desenvolvimento de Sistemas",
                     turma = "2DEVEST-B",

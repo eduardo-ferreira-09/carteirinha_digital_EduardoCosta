@@ -1,3 +1,19 @@
+import androidx.compose.runtime.Composable
+import androidx.compose.runtime.remember
+import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.navigation.NavHostController
+import androidx.navigation.compose.NavHost
+import com.rafaelcosta.carteirinhadigital2devest.app.navigation.aluno.alunoNavGraph
+import com.rafaelcosta.carteirinhadigital2devest.app.navigation.auth.authNavGraph
+import com.rafaelcosta.carteirinhadigital2devest.app.session.SessionViewModelFactory
+
+import com.rafaelcosta.carteirinhadigital2devest_b.app.di.AppContainer
+import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.GraphRoutes
+import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.professor.professorNavGraph
+import com.rafaelcosta.carteirinhadigital2devest_b.app.session.SessionViewModel
+
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.domain.model.PerfilAcesso
+
 
 @Composable
 fun AppNavHost(

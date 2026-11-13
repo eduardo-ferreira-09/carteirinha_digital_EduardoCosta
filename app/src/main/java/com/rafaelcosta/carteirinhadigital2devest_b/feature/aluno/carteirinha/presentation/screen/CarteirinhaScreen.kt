@@ -16,8 +16,8 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.unit.dp
 import com.rafaelcosta.carteirinhadigital2devest_b.R
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component.PerfilAluno
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component.QrCode
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.domain.model.UsuarioLogado
-import com.rafaelcosta.myapplication.QrCode
 
 @Composable
 fun CarteirinhaScreen(

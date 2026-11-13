@@ -1,5 +1,19 @@
 package com.rafaelcosta.carteirinhadigital2devest.feature.aluno.carteirinha.presentation.component
 
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Alignment
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.unit.TextUnit
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component.LabelText
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component.ValueText
+
 @Composable
 fun InfoAluno(
     modifier: Modifier = Modifier,

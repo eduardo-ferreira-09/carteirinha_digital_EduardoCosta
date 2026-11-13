@@ -1,3 +1,20 @@
+package com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.professor
+
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.padding
+import androidx.compose.ui.Modifier
+import androidx.navigation.NavGraphBuilder
+import androidx.navigation.compose.composable
+import androidx.navigation.navigation
+
+import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.GraphRoutes
+
+import com.rafaelcosta.carteirinhadigital2devest_b.app.navigation.ProfileGuard
+import com.rafaelcosta.carteirinhadigital2devest_b.app.ui.AppShell
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.domain.model.PerfilAcesso
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.login.domain.model.UsuarioLogado
+import com.rafaelcosta.carteirinhadigital2devest_b.feature.professor.home.presentation.screen.HomeProfessorScreen
+import kotlinx.coroutines.flow.StateFlow
 
 fun NavGraphBuilder.professorNavGraph(
     usuarioLogadoFlow: StateFlow<UsuarioLogado?>,

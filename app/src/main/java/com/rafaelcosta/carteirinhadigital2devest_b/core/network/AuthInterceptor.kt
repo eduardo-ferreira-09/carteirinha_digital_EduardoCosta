@@ -1,5 +1,6 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.core.network
 
+import com.rafaelcosta.carteirinhadigital2devest_b.core.auth.SessionTokenStore
 import okhttp3.Interceptor
 import okhttp3.Response
 

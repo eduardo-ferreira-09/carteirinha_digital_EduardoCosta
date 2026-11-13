@@ -1,6 +1,17 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.carteirinha.presentation.component
 
-import kotlin.text.get
+import android.graphics.Bitmap
+import android.graphics.Bitmap.createBitmap
+import android.graphics.Color
+import androidx.compose.foundation.Image
+import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.asImageBitmap
+import androidx.core.graphics.createBitmap
+import androidx.core.graphics.set
+import com.google.zxing.BarcodeFormat
+import com.google.zxing.EncodeHintType
+import com.google.zxing.qrcode.QRCodeWriter
 
 @Composable
 fun QrCode(

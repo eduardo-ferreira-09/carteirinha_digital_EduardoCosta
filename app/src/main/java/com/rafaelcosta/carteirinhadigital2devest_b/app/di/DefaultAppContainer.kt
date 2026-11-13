@@ -1,5 +1,6 @@
 package com.rafaelcosta.carteirinhadigital2devest_b.app.di
 
+import com.rafaelcosta.carteirinhadigital2devest_b.core.auth.SessionTokenStore
 import com.rafaelcosta.carteirinhadigital2devest_b.core.network.NetworkClient
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.unidadecurriculares.data.remote.service.UnidadeCurricularApi
 import com.rafaelcosta.carteirinhadigital2devest_b.feature.aluno.unidadecurriculares.data.repository.ApiUnidadeCurricularRepositoryImpl
@@ -38,8 +39,20 @@ class DefaultAppContainer : AppContainer {
         )
     }
 
+    // 1. Cria a API do Professor
+    private val unidadeCurricularProfessorApi: com.rafaelcosta.carteirinhadigital2devest_b.feature.professor.unidade_curriculares.data.remote.service.UnidadeCurricularProfessorApi by lazy {
+        networkClient.createAuthenticated(com.rafaelcosta.carteirinhadigital2devest_b.feature.professor.unidade_curriculares.data.remote.service.UnidadeCurricularProfessorApi::class.java)
+    }
+
+    // 2. Cria o Repositório do Professor
+    override val unidadeCurricularRepositoryProfessor: com.rafaelcosta.carteirinhadigital2devest_b.feature.professor.unidade_curriculares.domain.repository.UnidadeCurricularRepository by lazy {
+        com.rafaelcosta.carteirinhadigital2devest_b.feature.professor.unidade_curriculares.data.repository.ApiUnidadeCurricularRepositoryProfessorImp(unidadeCurricularProfessorApi)
+    }
+
     companion object {
         private const val BASE_URL = "http://10.0.2.2:8080/"
         private const val USE_FAKE_LOGIN_REPOSITORY = false
+
+
     }
 }
